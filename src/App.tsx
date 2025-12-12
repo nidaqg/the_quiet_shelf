@@ -57,14 +57,13 @@ export default function App() {
     return byStatus;
   }, [books]);
 
-  const title = useMemo(() => `Quiet Shelf · ${dayjs().format("MMM D")}`, []);
 
   return (
     <div className="page">
       <header className="header">
         <div>
-          <h1 className="title">{title}</h1>
-          <p className="subtitle">Private, calm reading tracking. Local-first.</p>
+          <h1 className="title">The Quiet Shelf</h1>
+          <p className="subtitle">Track your reading, your way.</p>
         </div>
 
         <nav className="nav">
@@ -82,12 +81,12 @@ export default function App() {
           </button>
         </nav>
       </header>
-
-      {tab === "add" && <AddBook />}
-      {tab === "library" && <Library books={books} counts={counts} />}
-      {tab === "daily" && <Daily books={books} logs={logs} />}
-      {tab === "monthly" && <Monthly books={books} logs={logs} />}
-
+      <>
+        {tab === "add" && <AddBook />}
+        {tab === "library" && <Library books={books} counts={counts} />}
+        {tab === "daily" && <Daily books={books} logs={logs} />}
+        {tab === "monthly" && <Monthly books={books} logs={logs} />}
+      </>
       <footer className="footer">
         <span>Tip: log a quick session each day to power the heatmap + monthly covers.</span>
       </footer>
