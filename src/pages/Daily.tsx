@@ -77,6 +77,7 @@ export default function Daily({ books, logs }: Props) {
     };
 
     await db.logs.add(entry);
+    window.dispatchEvent(new Event("quiet-shelf:db-changed"));
 
     setNote("");
     // keep pages/minutes as quick defaults
@@ -84,6 +85,7 @@ export default function Daily({ books, logs }: Props) {
 
   async function removeLog(id: string) {
     await db.logs.delete(id);
+    window.dispatchEvent(new Event("quiet-shelf:db-changed"));
   }
 
   return (

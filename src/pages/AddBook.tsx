@@ -83,6 +83,7 @@ export default function AddBook() {
     };
 
     await db.books.add(book);
+    window.dispatchEvent(new Event("quiet-shelf:db-changed"));
 
     // reset form but keep query/results
     setSelected(null);

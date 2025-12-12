@@ -53,6 +53,7 @@ export default function Library({ books, counts }: Props) {
       finishedOn: next === "finished" ? (book.finishedOn || dayjs().format("YYYY-MM-DD")) : book.finishedOn,
       dnfOn: next === "dnf" ? (book.dnfOn || dayjs().format("YYYY-MM-DD")) : book.dnfOn,
     });
+    window.dispatchEvent(new Event("quiet-shelf:db-changed"));
   }
 
   async function removeBook(id: string) {
@@ -61,6 +62,7 @@ export default function Library({ books, counts }: Props) {
       await db.logs.where("bookId").equals(id).delete();
       await db.books.delete(id);
     });
+    window.dispatchEvent(new Event("quiet-shelf:db-changed"));
   }
 
   return (

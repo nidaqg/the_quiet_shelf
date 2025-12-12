@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs";
 import { db } from "./db";
 import type { Book, BookStatus, ReadingLog } from "./types";
-import AddBook from "./pages/AddBook";
-import Library from "./pages/Library";
-import Daily from "./pages/Daily";
-import Monthly from "./pages/Monthly";
+import AddBook from "./pages/AddBook.tsx";
+import Library from "./pages/Library.tsx";
+import Daily from "./pages/Daily.tsx";
+import Monthly from "./pages/Monthly.tsx";
 
 type Tab = "add" | "library" | "daily" | "monthly";
 
@@ -83,7 +83,7 @@ export default function App() {
         </nav>
       </header>
 
-      {tab === "add" && <AddBook onSaved={() => setTab("library")} />}
+      {tab === "add" && <AddBook />}
       {tab === "library" && <Library books={books} counts={counts} />}
       {tab === "daily" && <Daily books={books} logs={logs} />}
       {tab === "monthly" && <Monthly books={books} logs={logs} />}
