@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { v4 as uuid } from "uuid";
 import dayjs from "dayjs";
 import { db } from "../db";

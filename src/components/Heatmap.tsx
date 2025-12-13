@@ -1,4 +1,3 @@
-import React from "react";
 
 type HeatmapProps = {
   days: Array<{ date: string; total: number; count: number }>;

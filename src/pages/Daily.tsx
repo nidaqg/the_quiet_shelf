@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import dayjs from "dayjs";
 import type { Book, ReadingLog } from "../types";
 import Heatmap from "../components/Heatmap.tsx";

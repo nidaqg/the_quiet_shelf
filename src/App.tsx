@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { BookStatus } from "./types";
 import AddBook from "./pages/AddBook.tsx";
 import Library from "./pages/Library.tsx";

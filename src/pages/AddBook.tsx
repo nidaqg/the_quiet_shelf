@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { GoogleBookResult } from "../googleBooks";
 import BookSearch from "../components/BookSearch.tsx";
 import BookDetailsForm from "../components/BookDetailsForm.tsx";

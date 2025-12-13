@@ -1,4 +1,3 @@
-import React from "react";
 import { db } from "../db";
 import type { Book, ReadingLog } from "../types";
 import { getBookCoverUrl } from "../utils/placeholders";

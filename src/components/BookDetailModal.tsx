@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import type { Book, BookStatus } from "../types";
 import { db } from "../db";
 import { getBookCoverUrl } from "../utils/placeholders";

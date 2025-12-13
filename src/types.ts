@@ -10,13 +10,13 @@ export type Book = {
   publishedDate?: string;
   description?: string;
 
-  genres: string[];     // from Google categories (normalized)
+  genres: string[];
   coverUrl?: string;
 
   status: BookStatus;
-  startedOn?: string;   // YYYY-MM-DD
-  finishedOn?: string;  // YYYY-MM-DD
-  dnfOn?: string;       // YYYY-MM-DD
+  startedOn?: string; 
+  finishedOn?: string;
+  dnfOn?: string;
 
   tags: string[];
   notes?: string;
@@ -27,7 +27,7 @@ export type Book = {
 
 export type ReadingLog = {
   id: string;
-  date: string;     // YYYY-MM-DD
+  date: string;
   bookId: string;
   minutes?: number;
   pages?: number;

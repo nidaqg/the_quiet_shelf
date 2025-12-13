@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Book } from "../types";
 import { getBookCoverUrl } from "../utils/placeholders";
 import BookDetailModal from "./BookDetailModal";
