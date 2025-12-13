@@ -45,6 +45,8 @@ export default function App() {
         message={
           tab === "add" 
             ? <>built by <a href="https://github.com/nidaqg" target="_blank" rel="noopener noreferrer">@nidaqg</a></> 
+            : tab === "library" 
+              ? "Tip: use custom tags to organize your reading list!"
             : "Tip: log a quick session each day to power the daily + monthly views!"
         }
       />

@@ -53,7 +53,7 @@ export default function Library({ books }: Props) {
 
   return (
     <div className="libraryPage">
-      <div className="card">
+      <div className="card libraryCards">
         <h2 className="sectionTitle">Library</h2>
 
         <div className="libraryFilters">
@@ -73,7 +73,9 @@ export default function Library({ books }: Props) {
             placeholder="Search title, author, tags…"
           />
         </div>
+      </div>
 
+      <div className="card libraryCards">
         <BookSection
           title="Currently Reading"
           books={booksByStatus.reading}
@@ -81,7 +83,9 @@ export default function Library({ books }: Props) {
           onRemove={removeBook}
           statusLabels={STATUS_LABELS}
         />
+      </div>
 
+      <div className="card libraryCards">
         <BookSection
           title="To Be Read"
           books={booksByStatus.tbr}
@@ -89,7 +93,9 @@ export default function Library({ books }: Props) {
           onRemove={removeBook}
           statusLabels={STATUS_LABELS}
         />
+      </div>
 
+      <div className="card libraryCards">
         <BookSection
           title="Finished"
           books={booksByStatus.finished}
@@ -97,7 +103,9 @@ export default function Library({ books }: Props) {
           onRemove={removeBook}
           statusLabels={STATUS_LABELS}
         />
+      </div>
 
+      <div className="card">
         <BookSection
           title="Did Not Finish"
           books={booksByStatus.dnf}

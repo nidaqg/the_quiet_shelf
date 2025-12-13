@@ -20,7 +20,7 @@ export default function BookSection({
 
   return (
     <>
-      <h3 className="sectionTitle" style={{ marginTop: 24, marginBottom: 12 }}>
+      <h3 className="sectionTitle" style={{ marginBottom: 12 }}>
         {title}
       </h3>
       <BookList

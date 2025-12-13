@@ -8,7 +8,7 @@ export default function Footer({ message }: FooterProps) {
   return (
     <footer className="footer">
       <span>
-        {message || "Tip: log a quick session each day to power the heatmap + monthly covers."}
+        {message}
       </span>
         <span className="version">v1.0.0</span>
     </footer>

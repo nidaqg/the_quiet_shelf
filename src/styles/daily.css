@@ -1,8 +1,7 @@
-/* Daily page styles */
 .dailyPage {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -20,7 +19,7 @@
 .dailyRightColumn {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
 }
 
 @media (max-width: 980px) {
