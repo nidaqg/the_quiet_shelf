@@ -1,5 +1,6 @@
 import React from "react";
 import dayjs from "dayjs";
+import { getBookCoverUrl } from "../utils/placeholders";
 
 type CalendarGridProps = {
   calendarDays: (string | null)[];
@@ -41,7 +42,7 @@ export default function CalendarGrid({
                 <img
                   key={`${date}-cover-${i}`}
                   className="calendarDayCover"
-                  src={coverUrl}
+                  src={getBookCoverUrl(coverUrl)}
                   alt=""
                 />
               ))}

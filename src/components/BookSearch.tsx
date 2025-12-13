@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { searchGoogleBooksByTitle, GoogleBookResult } from "../googleBooks";
+import { getBookCoverUrl } from "../utils/placeholders";
 
 type BookSearchProps = {
   onSelectBook: (book: GoogleBookResult) => void;
@@ -74,7 +75,7 @@ export default function BookSearch({ onSelectBook }: BookSearchProps) {
               >
                 <img
                   className="searchResultCover"
-                  src={result.thumbnail || ""}
+                  src={getBookCoverUrl(result.thumbnail)}
                   alt=""
                 />
                 <div className="searchResultDetails">

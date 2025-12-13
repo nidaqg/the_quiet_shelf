@@ -1,6 +1,7 @@
 import React from "react";
 import { db } from "../db";
 import type { Book, ReadingLog } from "../types";
+import { getBookCoverUrl } from "../utils/placeholders";
 
 type LogsListProps = {
   logs: ReadingLog[];
@@ -32,7 +33,7 @@ export default function LogsList({ logs, bookMap }: LogsListProps) {
 
         return (
           <li key={log.id} className="logItem">
-            <img className="bookCover" src={book?.coverUrl || ""} alt="" />
+            <img className="bookCover" src={getBookCoverUrl(book?.coverUrl)} alt="" />
             <div className="logDetails">
               <div className="logTitle">{book?.title || "Unknown book"}</div>
               {details && <div className="logMeta">{details}</div>}

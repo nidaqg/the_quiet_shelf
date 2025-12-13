@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { db } from "../db";
 import type { Book, BookStatus } from "../types";
 import type { GoogleBookResult } from "../googleBooks";
+import { getBookCoverUrl } from "../utils/placeholders";
 
 type BookDetailsFormProps = {
   selectedBook: GoogleBookResult;
@@ -86,7 +87,7 @@ export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFor
       <div className="selectedBookPreview">
         <img
           className="selectedBookCover"
-          src={selectedBook.thumbnail || ""}
+          src={getBookCoverUrl(selectedBook.thumbnail)}
           alt=""
         />
         <div className="selectedBookInfo">

@@ -1,5 +1,6 @@
 import React from "react";
 import type { Book } from "../types";
+import { getBookCoverUrl } from "../utils/placeholders";
 
 type BookListProps = {
   books: Book[];
@@ -21,7 +22,7 @@ export default function BookList({ books, onCycleStatus, onRemove, statusLabels 
     <ul className="bookList">
       {books.map((book) => (
         <li key={book.id} className="bookListItem">
-          <img className="bookCover" src={book.coverUrl || ""} alt="" />
+          <img className="bookCover" src={getBookCoverUrl(book.coverUrl)} alt="" />
           <div className="bookDetails">
             <div className="bookTitle">{book.title}</div>
             <div className="bookMeta">
