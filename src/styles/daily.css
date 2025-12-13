@@ -34,8 +34,8 @@
   gap: 2px;
   padding: 8px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-primary);
+  background: var(--bg-tertiary);
   overflow-y: auto;
   flex: 1;
   align-content: start;
@@ -46,28 +46,28 @@
   width: 10px;
   height: 10px;
   border-radius: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
 }
 
 .heatmapCell.intensity-low {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--bg-secondary);
 }
 
 .heatmapCell.intensity-medium {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--bg-hover);
 }
 
 .heatmapCell.intensity-high {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--text-tertiary);
 }
 
 .heatmapCell.intensity-very-high {
-  background: rgba(255, 255, 255, 0.42);
+  background: var(--text-secondary);
 }
 
 .heatmapCell:hover {
-  outline: 2px solid rgba(255, 255, 255, 0.22);
+  outline: 2px solid var(--border-focus);
   cursor: pointer;
 }
 
@@ -86,8 +86,8 @@
   align-items: center;
   padding: 10px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
 }
 
 .logDetails {

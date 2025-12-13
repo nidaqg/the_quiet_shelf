@@ -1,8 +1,9 @@
+/* Header and navigation styles */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: black;
+  background: var(--bg-primary);
   padding: 22px 0 14px;
   display: flex;
   align-items: baseline;
@@ -36,7 +37,7 @@
 .hamburger span {
   width: 24px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--text-secondary);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -60,7 +61,7 @@
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: rgb(29, 29, 29);
+    background: var(--bg-secondary);
     border-radius: 8px;
     padding: 0;
     max-height: 0;
@@ -70,7 +71,8 @@
   }
 
   .nav.open {
-    max-height: 300px;
+    max-height: 400px;
+    border: 1px solid var(--border-primary);
     width: 250px;
   }
 }
@@ -78,7 +80,7 @@
 .navLink {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
   cursor: pointer;
   font-size: 14px;
   padding: 8px 0;
@@ -88,19 +90,19 @@
 }
 
 .navLink:hover {
-  color: rgba(255, 255, 255, 0.9);
-  border-bottom-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-primary);
+  border-bottom-color: var(--border-focus);
 }
 
 .navLink[aria-pressed="true"] {
-  color: rgba(255, 255, 255, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
+  border-bottom-color: var(--border-focus);
   font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .navLink {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-primary);
     border-radius: 0;
     padding: 12px 16px;
     width: 100%;
@@ -109,7 +111,62 @@
   }
 
   .navLink[aria-pressed="true"] {
-    background: rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--bg-hover);
+    border-bottom: 1px solid var(--border-secondary);
+  }
+}
+
+.themeToggleWrapper {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-primary);
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.themeToggleTrack {
+  display: block;
+  width: 48px;
+  height: 24px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-primary);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.themeToggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.themeToggle[aria-checked="true"] .themeToggleTrack {
+  background: var(--bg-hover);
+  border-color: var(--border-secondary);
+}
+
+.themeToggle[aria-checked="true"] .themeToggleThumb {
+  transform: translateX(24px);
+}
+
+.themeToggle:hover .themeToggleTrack {
+  border-color: var(--border-focus);
+}
+
+@media (min-width: 769px) {
+  .themeToggleWrapper {
+    border-top: none;
+    padding: 0;
+    margin-left: 8px;
   }
 }

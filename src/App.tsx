@@ -7,6 +7,7 @@ import Monthly from "./pages/Monthly.tsx";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import { useBooks } from "./hooks/useBooks";
+import { useTheme } from "./hooks/useTheme";
 
 type Tab = "add" | "library" | "daily" | "monthly";
 
@@ -15,6 +16,7 @@ export const DB_CHANGED_EVENT = "quiet-shelf:db-changed";
 export default function App() {
   const [tab, setTab] = useState<Tab>("add");
   const { books, logs } = useBooks();
+  const { theme, setTheme } = useTheme();
 
   const counts = useMemo(() => {
     const byStatus: Record<BookStatus, number> = {
@@ -33,7 +35,7 @@ export default function App() {
 
   return (
     <div className="page">
-      <Header currentTab={tab} onTabChange={setTab} bookCount={libraryCount} />
+      <Header currentTab={tab} onTabChange={setTab} bookCount={libraryCount} theme={theme} onThemeChange={setTheme} />
 
       <div className="mainContent">
         {tab === "add" && <AddBook />}

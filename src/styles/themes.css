@@ -1,0 +1,56 @@
+/* Theme Variables */
+:root {
+  /* Dark Theme (default) */
+  --bg-primary: #000000;
+  --bg-secondary: #0f0f0f;
+  --bg-tertiary: #1a1a1a;
+  --bg-hover: #252525;
+  --bg-input: #1a1a1a;
+  
+  --text-primary: #e8e8e8;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #999999;
+  
+  --border-primary: #2a2a2a;
+  --border-secondary: #333333;
+  --border-focus: #4d4d4d;
+  
+  --shadow: rgba(0, 0, 0, 0.25);
+  --shadow-heavy: rgba(0, 0, 0, 0.5);
+  
+  --delete-bg: #2d1515;
+  --delete-border: #5a2a2a;
+  --delete-text: #ffbebe;
+  
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b3b3b3' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  
+  color-scheme: dark;
+}
+
+/* Light Theme */
+body[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #fafafa;
+  --bg-hover: #ebebeb;
+  --bg-input: #f8f8f8;
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: #4d4d4d;
+  --text-tertiary: #737373;
+  
+  --border-primary: #e0e0e0;
+  --border-secondary: #d4d4d4;
+  --border-focus: #999999;
+  
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-heavy: rgba(0, 0, 0, 0.15);
+  
+  --delete-bg: #fef2f2;
+  --delete-border: #fca5a5;
+  --delete-text: #7f1d1d;
+  
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234d4d4d' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  
+  color-scheme: light;
+}

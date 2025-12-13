@@ -1,4 +1,6 @@
 import React from "react";
+import ThemeToggle from "./ThemeToggle";
+import type { Theme } from "../hooks/useTheme";
 
 type Tab = "add" | "library" | "daily" | "monthly";
 
@@ -6,9 +8,11 @@ type HeaderProps = {
   currentTab: Tab;
   onTabChange: (tab: Tab) => void;
   bookCount: number;
+  theme: Theme;
+  onThemeChange: (theme: Theme) => void;
 };
 
-export default function Header({ currentTab, onTabChange, bookCount }: HeaderProps) {
+export default function Header({ currentTab, onTabChange, bookCount, theme, onThemeChange }: HeaderProps) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleTabClick = (tab: Tab) => {
@@ -52,6 +56,10 @@ export default function Header({ currentTab, onTabChange, bookCount }: HeaderPro
             {label}
           </button>
         ))}
+        
+        <div className="themeToggleWrapper">
+          <ThemeToggle theme={theme} onThemeChange={onThemeChange} />
+        </div>
       </nav>
     </header>
   );
