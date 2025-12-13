@@ -10,7 +10,7 @@ type BookListProps = {
   statusLabels: Record<string, string>;
 };
 
-export default function BookList({ books, onCycleStatus, onRemove, statusLabels }: BookListProps) {
+export default function BookList({ books, statusLabels }: BookListProps) {
   const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
   const selectedBook = books.find(b => b.id === selectedBookId) || null;
 
@@ -49,18 +49,6 @@ export default function BookList({ books, onCycleStatus, onRemove, statusLabels 
                 </div>
                 {book.notes && <div className="bookNotes">{book.notes}</div>}
               </div>
-            </div>
-            <div className="bookActions">
-              <button
-                className="bookActionButton"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRemove(book.id);
-                }}
-                title="Remove book"
-              >
-                ✕
-              </button>
             </div>
           </li>
         ))}

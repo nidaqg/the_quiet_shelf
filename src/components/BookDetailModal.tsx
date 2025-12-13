@@ -15,12 +15,14 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
   const [tags, setTags] = useState(book.tags.join(", "));
   const [notes, setNotes] = useState(book.notes || "");
   const [saving, setSaving] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   // Sync form state when book prop changes
   useEffect(() => {
     setStatus(book.status);
     setTags(book.tags.join(", "));
     setNotes(book.notes || "");
+    setConfirmDelete(false);
   }, [book]);
 
   async function handleSave() {
@@ -57,7 +59,8 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
   }
 
   async function handleDelete() {
-    if (!confirm(`Delete "${book.title}"? This cannot be undone.`)) {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
       return;
     }
 
@@ -138,8 +141,8 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
         </div>
 
         <div className="modalFooter">
-          <button className="button" onClick={handleDelete} disabled={saving}>
-            Delete
+          <button className="button deleteButton" onClick={handleDelete} disabled={saving}>
+            {confirmDelete ? "Click again to confirm Delete" : "Delete"}
           </button>
           <button className="button" onClick={handleSave} disabled={saving}>
             {saving ? "Saving..." : "Save"}
