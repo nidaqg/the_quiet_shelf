@@ -106,7 +106,7 @@ export default function AddBook() {
               className="input"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. Stolen Tongues"
+              placeholder="e.g. The Hobbit"
             />
             <div className="hint">Search by title, then click the correct result.</div>
           </div>
