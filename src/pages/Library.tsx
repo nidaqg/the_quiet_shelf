@@ -19,13 +19,13 @@ const STATUS_LABELS: Record<BookStatus, string> = {
 
 export default function Library({ books, counts }: Props) {
   const [statusFilter, setStatusFilter] = useState<BookStatus | "all">("all");
-  const [genreFilter, setGenreFilter] = useState<string>("all");
+  const [tagFilter, setTagFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { genres, filteredBooks } = useLibraryFilters(
+  const { tags, filteredBooks } = useLibraryFilters(
     books,
     statusFilter,
-    genreFilter,
+    tagFilter,
     searchQuery
   );
 
@@ -75,22 +75,22 @@ export default function Library({ books, counts }: Props) {
             >
               <option value="all">All ({books.length})</option>
               <option value="reading">Reading ({counts.reading})</option>
-              <option value="tbr">TBR ({counts.tbr})</option>
+              <option value="tbr">To Be Read ({counts.tbr})</option>
               <option value="finished">Finished ({counts.finished})</option>
-              <option value="dnf">DNF ({counts.dnf})</option>
+              <option value="dnf">Did Not Finish ({counts.dnf})</option>
             </select>
           </div>
 
           <div className="field">
-            <label className="label">Genre</label>
+            <label className="label">Tag</label>
             <select
               className="select"
-              value={genreFilter}
-              onChange={(e) => setGenreFilter(e.target.value)}
+              value={tagFilter}
+              onChange={(e) => setTagFilter(e.target.value)}
             >
-              {genres.map((genre) => (
-                <option key={genre} value={genre}>
-                  {genre === "all" ? "All" : genre}
+              {tags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag === "all" ? "All" : tag}
                 </option>
               ))}
             </select>

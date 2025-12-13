@@ -40,7 +40,7 @@ export default function LogsList({ logs, bookMap }: LogsListProps) {
               {log.note && <div className="logNote">{log.note}</div>}
             </div>
             <button
-              className="button"
+              className="bookActionButton"
               onClick={() => handleRemoveLog(log.id)}
               aria-label="Remove log"
             >
