@@ -27,9 +27,13 @@ export default function App() {
     return byStatus;
   }, [books]);
 
+  const libraryCount = useMemo(() => {
+    return books.filter((b) => b.status !== "dnf").length;
+  }, [books]);
+
   return (
     <div className="page">
-      <Header currentTab={tab} onTabChange={setTab} bookCount={books.length} />
+      <Header currentTab={tab} onTabChange={setTab} bookCount={libraryCount} />
 
       <div className="mainContent">
         {tab === "add" && <AddBook />}

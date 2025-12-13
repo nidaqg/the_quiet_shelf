@@ -29,6 +29,11 @@ export default function Library({ books, counts }: Props) {
     searchQuery
   );
 
+  // Separate DNF books from the main library
+  const nonDnfBooks = filteredBooks.filter((book) => book.status !== "dnf");
+  const dnfBooks = filteredBooks.filter((book) => book.status === "dnf");
+  const libraryTotal = books.filter((book) => book.status !== "dnf").length;
+
   async function handleCycleStatus(book: Book) {
     const nextStatus: BookStatus =
       book.status === "tbr"
@@ -73,7 +78,7 @@ export default function Library({ books, counts }: Props) {
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as BookStatus | "all")}
             >
-              <option value="all">All ({books.length})</option>
+              <option value="all">All</option>
               <option value="reading">Reading ({counts.reading})</option>
               <option value="tbr">To Be Read ({counts.tbr})</option>
               <option value="finished">Finished ({counts.finished})</option>
@@ -109,12 +114,26 @@ export default function Library({ books, counts }: Props) {
 
         <div style={{ marginTop: 12 }}>
           <BookList
-            books={filteredBooks}
+            books={nonDnfBooks}
             onCycleStatus={handleCycleStatus}
             onRemove={handleRemoveBook}
             statusLabels={STATUS_LABELS}
           />
         </div>
+
+        {dnfBooks.length > 0 && (
+          <>
+            <h3 className="sectionTitle" style={{ marginTop: 24, marginBottom: 12 }}>
+              Did Not Finish
+            </h3>
+            <BookList
+              books={dnfBooks}
+              onCycleStatus={handleCycleStatus}
+              onRemove={handleRemoveBook}
+              statusLabels={STATUS_LABELS}
+            />
+          </>
+        )}
       </div>
     </div>
   );
