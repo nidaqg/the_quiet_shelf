@@ -1,0 +1,82 @@
+/* Monthly page styles */
+.monthlyPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .monthlyPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+.monthlyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.monthlyNav {
+  display: flex;
+  gap: 8px;
+}
+
+.monthCalendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.calendarDay {
+  min-height: 86px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background 0.2s ease;
+}
+
+.calendarDay:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.calendarDayEmpty {
+  opacity: 0;
+  cursor: default;
+}
+
+.calendarDayNumber {
+  font-size: 12px;
+  opacity: 0.75;
+  align-self: flex-start;
+}
+
+.calendarDayCovers {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.calendarDayCover {
+  width: 28px;
+  height: 38px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.calendarDayOverflow {
+  font-size: 12px;
+  opacity: 0.75;
+}

@@ -1,0 +1,12 @@
+/* Footer styles */
+.footer {
+  margin-top: auto;
+  padding-top: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}

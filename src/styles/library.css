@@ -1,0 +1,5 @@
+/* Library page styles */
+.libraryPage {
+  display: flex;
+  flex-direction: column;
+}
