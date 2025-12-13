@@ -1,7 +1,7 @@
 import React from "react";
 
 type FooterProps = {
-  message?: string;
+  message?: React.ReactNode;
 };
 
 export default function Footer({ message }: FooterProps) {

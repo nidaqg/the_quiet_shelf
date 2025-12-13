@@ -94,7 +94,7 @@ export default function AddBook() {
   }
 
   return (
-    <div className="split">
+    <div className="addBookPage">
       <div className="card">
         <h2 className="sectionTitle">Add a book</h2>
 

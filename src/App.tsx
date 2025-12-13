@@ -31,14 +31,20 @@ export default function App() {
     <div className="page">
       <Header currentTab={tab} onTabChange={setTab} bookCount={books.length} />
 
-      <>
+      <div className="mainContent">
         {tab === "add" && <AddBook />}
         {tab === "library" && <Library books={books} counts={counts} />}
         {tab === "daily" && <Daily books={books} logs={logs} />}
         {tab === "monthly" && <Monthly books={books} logs={logs} />}
-      </>
 
-      <Footer />
+      <Footer 
+        message={
+          tab === "add" 
+            ? <>built by <a href="https://github.com/nidaqg" target="_blank" rel="noopener noreferrer">@nidaqg</a></> 
+            : "Tip: log a quick session each day to power the daily + monthly views!"
+        }
+      />
+      </div>
     </div>
   );
 }
