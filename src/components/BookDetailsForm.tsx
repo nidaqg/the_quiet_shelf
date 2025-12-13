@@ -12,10 +12,10 @@ type BookDetailsFormProps = {
 };
 
 const BOOK_STATUSES: { value: BookStatus; label: string }[] = [
-  { value: "tbr", label: "TBR" },
+  { value: "tbr", label: "To Be Read" },
   { value: "reading", label: "Reading" },
   { value: "finished", label: "Finished" },
-  { value: "dnf", label: "DNF" },
+  { value: "dnf", label: "Did Not Finish" },
 ];
 
 function getTodayDate() {
