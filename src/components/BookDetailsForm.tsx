@@ -22,24 +22,12 @@ function getTodayDate() {
   return dayjs().format("YYYY-MM-DD");
 }
 
-function getDateLabel(status: BookStatus): string {
-  switch (status) {
-    case "reading":
-      return "Started on";
-    case "finished":
-      return "Finished on";
-    case "dnf":
-      return "DNF on";
-    default:
-      return "Date";
-  }
-}
-
 export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFormProps) {
   const [status, setStatus] = useState<BookStatus>("tbr");
   const [tags, setTags] = useState("");
   const [notes, setNotes] = useState("");
-  const [date, setDate] = useState<string>(getTodayDate());
+  const [startedOn, setStartedOn] = useState<string>("");
+  const [finishedOn, setFinishedOn] = useState<string>("");
 
   const tagList = useMemo(() => {
     return tags
@@ -62,9 +50,9 @@ export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFor
       genres: selectedBook.categories,
       coverUrl: selectedBook.thumbnail,
       status,
-      startedOn: status === "reading" ? date : undefined,
-      finishedOn: status === "finished" ? date : undefined,
-      dnfOn: status === "dnf" ? date : undefined,
+      startedOn: startedOn || undefined,
+      finishedOn: finishedOn || undefined,
+      dnfOn: undefined,
       tags: tagList,
       notes: notes.trim() || undefined,
       createdAt: now,
@@ -78,7 +66,8 @@ export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFor
     setStatus("tbr");
     setTags("");
     setNotes("");
-    setDate(getTodayDate());
+    setStartedOn("");
+    setFinishedOn("");
     onSave();
   }
 
@@ -119,19 +108,27 @@ export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFor
               </option>
             ))}
           </select>
-          <div className="hint">Set TBR/Reading/Finished/DNF.</div>
         </div>
 
         <div className="field">
-          <label className="label">{getDateLabel(status)}</label>
+          <label className="label">Started Reading (optional)</label>
           <input
             className="input"
             type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={startedOn}
+            onChange={(e) => setStartedOn(e.target.value)}
           />
-          <div className="hint">Used for started/finished/DNF dates.</div>
         </div>
+      </div>
+
+      <div className="field" style={{ marginTop: 10 }}>
+        <label className="label">Finished Reading (optional)</label>
+        <input
+          className="input"
+          type="date"
+          value={finishedOn}
+          onChange={(e) => setFinishedOn(e.target.value)}
+        />
       </div>
 
       <div className="field" style={{ marginTop: 10 }}>
