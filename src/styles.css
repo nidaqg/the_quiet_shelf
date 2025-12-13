@@ -231,18 +231,25 @@ a {
   color: rgba(255, 190, 190, 0.95);
 }
 
-.results {
+.searchForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.searchResults {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
+
 @media (max-width: 800px) {
-  .results {
+  .searchResults {
     grid-template-columns: 1fr;
   }
 }
 
-.result {
+.searchResultItem {
   display: grid;
   grid-template-columns: 48px 1fr;
   gap: 10px;
@@ -252,7 +259,71 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
 }
+
+.searchResultItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.searchResultCover {
+  width: 48px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.searchResultDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.searchResultTitle {
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.searchResultMeta {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.selectedBookPreview {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 10px;
+}
+
+.selectedBookCover {
+  width: 64px;
+  height: 88px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selectedBookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selectedBookTitle {
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.selectedBookAuthor {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+/* Legacy classes still used by Library and Monthly pages */
 .cover {
   width: 48px;
   height: 64px;
@@ -261,21 +332,25 @@ a {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .resultTitle {
   font-weight: 650;
   line-height: 1.15;
 }
+
 .muted {
   opacity: 0.7;
   font-size: 12px;
   margin-top: 3px;
 }
+
 .pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 6px;
 }
+
 .pill {
   font-size: 12px;
   opacity: 0.85;
@@ -285,14 +360,21 @@ a {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.list {
+/* Library Page */
+.libraryPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   gap: 10px;
 }
-.li {
+
+.bookListItem {
   display: grid;
   grid-template-columns: 48px 1fr auto;
   gap: 10px;
@@ -302,12 +384,129 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
 }
-.kv {
+
+.bookDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bookTitle {
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.bookMeta {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.bookNotes {
+  opacity: 0.7;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.bookActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Monthly Page */
+.monthlyPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .monthlyPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+.monthlyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.monthlyNav {
+  display: flex;
+  gap: 8px;
+}
+
+.monthCalendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.calendarDay {
+  min-height: 86px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.calendarDay:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.calendarDayEmpty {
+  opacity: 0;
+  cursor: default;
+}
+
+.calendarDayNumber {
   font-size: 12px;
   opacity: 0.75;
 }
-.kv strong {
-  opacity: 1;
+
+.calendarDayCovers {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.calendarDayCover {
+  width: 28px;
+  height: 38px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.calendarDayOverflow {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 12px;
+  opacity: 0.85;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .addBookPage {
@@ -331,6 +530,25 @@ a {
   }
 }
 
+.dailyPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.dailyRightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 980px) {
+  .dailyPage {
+    grid-template-columns: 1fr;
+  }
+}
+
 .heatmap {
   display: grid;
   grid-template-columns: repeat(53, 10px);
@@ -341,66 +559,90 @@ a {
   background: rgba(0, 0, 0, 0.18);
   overflow-x: auto;
 }
-.cell {
+
+.heatmapCell {
   width: 10px;
   height: 10px;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.06);
 }
-.cell.l1 {
+
+.heatmapCell.intensity-low {
   background: rgba(255, 255, 255, 0.12);
 }
-.cell.l2 {
+
+.heatmapCell.intensity-medium {
   background: rgba(255, 255, 255, 0.2);
 }
-.cell.l3 {
+
+.heatmapCell.intensity-high {
   background: rgba(255, 255, 255, 0.3);
 }
-.cell.l4 {
+
+.heatmapCell.intensity-very-high {
   background: rgba(255, 255, 255, 0.42);
 }
-.cell:hover {
+
+.heatmapCell:hover {
   outline: 2px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
 }
 
-.monthGrid {
+.logsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 10px;
+  gap: 10px;
 }
-.day {
-  min-height: 86px;
+
+.logItem {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
-  padding: 8px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
 }
-.dayNum {
-  font-size: 12px;
-  opacity: 0.75;
-}
-.dayCovers {
-  margin-top: 6px;
+
+.logDetails {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 3px;
 }
-.dayCover {
-  width: 28px;
-  height: 38px;
-  border-radius: 6px;
+
+.logTitle {
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.logMeta {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.logNote {
+  opacity: 0.7;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.bookCover {
+  width: 48px;
+  height: 64px;
+  border-radius: 8px;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.small {
+
+.emptyMessage {
   font-size: 12px;
   opacity: 0.75;
+  margin: 0;
 }
 
 .footer {
