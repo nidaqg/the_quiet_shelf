@@ -23,17 +23,15 @@ export default function Daily({ books, logs }: Props) {
 
   return (
     <div className="dailyPage">
-      <div className="card">
-        <h2 className="sectionTitle">Daily</h2>
-        <p className="hint" style={{ marginBottom: 10 }}>
-          Heatmap shows last 365 days. Click a square to see that day.
-        </p>
+      <div className="dailyLeftColumn">
+        <div className="card">
+          <h2 className="sectionTitle">365 Days</h2>
+          <p className="hint" style={{ marginBottom: 10 }}>
+            Click a square to see logs for that day.
+          </p>
 
-        <Heatmap days={last365Days} onDateClick={setSelectedDate} />
-
-        <p className="hint" style={{ marginTop: 8 }}>
-          Tip: pages/minutes are optional, logging *anything* makes the day show up.
-        </p>
+          <Heatmap days={last365Days} onDateClick={setSelectedDate} />
+        </div>
       </div>
 
       <div className="dailyRightColumn">
