@@ -14,21 +14,38 @@ export default function AddBook() {
     setSelectedBook(null);
   }
 
+  function handleCancel() {
+    setSelectedBook(null);
+  }
+
   return (
-    <div className="addBookPage">
-      <div className="card">
-        <h2 className="sectionTitle">Add a book</h2>
-        <BookSearch onSelectBook={handleSelectBook} />
+    <>
+      <div className="addBookPage">
+        <div className="card">
+          <h2 className="sectionTitle">Add a book</h2>
+          <BookSearch onSelectBook={handleSelectBook} />
+        </div>
       </div>
 
-      <div className="card">
-        <h2 className="sectionTitle">Details</h2>
-        {!selectedBook ? (
-          <p className="emptyMessage">Pick a result on the left to add it to your library.</p>
-        ) : (
-          <BookDetailsForm selectedBook={selectedBook} onSave={handleSave} />
-        )}
-      </div>
-    </div>
+      {selectedBook && (
+        <div className="modalOverlay" onClick={handleCancel}>
+          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+            <div className="modalHeader">
+              <h2 className="modalTitle">Add Book Details</h2>
+              <button className="modalClose" onClick={handleCancel}>
+                ✕
+              </button>
+            </div>
+            <div className="modalBody">
+              <BookDetailsForm 
+                selectedBook={selectedBook} 
+                onSave={handleSave}
+                onCancel={handleCancel}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

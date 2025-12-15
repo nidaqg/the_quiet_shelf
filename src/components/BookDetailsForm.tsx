@@ -9,6 +9,7 @@ import { getBookCoverUrl } from "../utils/placeholders";
 type BookDetailsFormProps = {
   selectedBook: GoogleBookResult;
   onSave: () => void;
+  onCancel?: () => void;
 };
 
 const BOOK_STATUSES: { value: BookStatus; label: string }[] = [
@@ -22,7 +23,7 @@ function getTodayDate() {
   return dayjs().format("YYYY-MM-DD");
 }
 
-export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFormProps) {
+export default function BookDetailsForm({ selectedBook, onSave, onCancel }: BookDetailsFormProps) {
   const [status, setStatus] = useState<BookStatus>("tbr");
   const [tags, setTags] = useState("");
   const [notes, setNotes] = useState("");
@@ -152,6 +153,11 @@ export default function BookDetailsForm({ selectedBook, onSave }: BookDetailsFor
       </div>
 
       <div className="actions">
+        {onCancel && (
+          <button className="button" onClick={onCancel}>
+            Cancel
+          </button>
+        )}
         <button className="button" onClick={handleSave}>
           Save to library
         </button>

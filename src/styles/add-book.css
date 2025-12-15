@@ -1,21 +1,16 @@
 .addBookPage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-  margin: auto 0;
+  display: flex;
+  justify-content: center;
 }
 
 .addBookPage > .card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
 }
 
 @media (max-width: 980px) {
   .addBookPage {
-    grid-template-columns: 1fr;
-    margin: 0;
+    display: block;
   }
 }
 
