@@ -208,3 +208,44 @@
   background: none;
   border: none;
 }
+
+.starRating {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.starButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.starButton:hover {
+  transform: scale(1.15);
+}
+
+.starFilled,
+.starEmpty {
+  font-size: 28px;
+  display: block;
+}
+
+.starFilled {
+  color: #f59e0b;
+}
+
+.starEmpty {
+  color: var(--border-secondary);
+}
+
+.bookRating {
+  font-size: 16px;
+  line-height: 1;
+  color: #f59e0b;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}

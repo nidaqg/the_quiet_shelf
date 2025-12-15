@@ -5,6 +5,7 @@ import { db } from "../db";
 import type { Book, BookStatus } from "../types";
 import type { GoogleBookResult } from "../googleBooks";
 import { getBookCoverUrl } from "../utils/placeholders";
+import StarRating from "./StarRating";
 
 type BookDetailsFormProps = {
   selectedBook: GoogleBookResult;
@@ -29,6 +30,7 @@ export default function BookDetailsForm({ selectedBook, onSave, onCancel }: Book
   const [notes, setNotes] = useState("");
   const [startedOn, setStartedOn] = useState<string>("");
   const [finishedOn, setFinishedOn] = useState<string>("");
+  const [rating, setRating] = useState<number>(0);
 
   const tagList = useMemo(() => {
     return tags
@@ -56,6 +58,7 @@ export default function BookDetailsForm({ selectedBook, onSave, onCancel }: Book
       dnfOn: undefined,
       tags: tagList,
       notes: notes.trim() || undefined,
+      rating: rating > 0 ? rating : undefined,
       createdAt: now,
       updatedAt: now,
     };
@@ -69,6 +72,7 @@ export default function BookDetailsForm({ selectedBook, onSave, onCancel }: Book
     setNotes("");
     setStartedOn("");
     setFinishedOn("");
+    setRating(0);
     onSave();
   }
 
@@ -150,6 +154,11 @@ export default function BookDetailsForm({ selectedBook, onSave, onCancel }: Book
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Anything you want to remember…"
         />
+      </div>
+
+      <div className="field" style={{ marginTop: 10 }}>
+        <label className="label">Rating</label>
+        <StarRating rating={rating} onChange={setRating} />
       </div>
 
       <div className="actions">

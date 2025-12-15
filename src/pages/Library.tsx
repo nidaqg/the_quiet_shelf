@@ -53,7 +53,7 @@ export default function Library({ books }: Props) {
 
   return (
     <div className="libraryPage">
-      <div className="card libraryCards">
+      <div className="card libraryHeaderCard">
         <h2 className="sectionTitle">Library</h2>
 
         <div className="libraryFilters">

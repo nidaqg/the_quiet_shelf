@@ -4,6 +4,7 @@ import { db } from "../db";
 import { getBookCoverUrl } from "../utils/placeholders";
 import { DB_CHANGED_EVENT } from "../App";
 import dayjs from "dayjs";
+import StarRating from "./StarRating";
 
 type BookDetailModalProps = {
   book: Book;
@@ -14,6 +15,7 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
   const [status, setStatus] = useState<BookStatus>(book.status);
   const [tags, setTags] = useState(book.tags.join(", "));
   const [notes, setNotes] = useState(book.notes || "");
+  const [rating, setRating] = useState(book.rating || 0);
   const [saving, setSaving] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -22,6 +24,7 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
     setStatus(book.status);
     setTags(book.tags.join(", "));
     setNotes(book.notes || "");
+    setRating(book.rating || 0);
     setConfirmDelete(false);
   }, [book]);
 
@@ -33,6 +36,7 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
         status,
         tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
         notes: notes.trim() || undefined,
+        rating: rating > 0 ? rating : undefined,
         updatedAt: new Date().toISOString(),
       };
 
@@ -137,6 +141,11 @@ export default function BookDetailModal({ book, onClose }: BookDetailModalProps)
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Your thoughts about this book..."
             />
+          </div>
+
+          <div className="field">
+            <label className="label">Rating</label>
+            <StarRating rating={rating} onChange={setRating} />
           </div>
         </div>
 

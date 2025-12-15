@@ -8,12 +8,6 @@
   max-width: 800px;
 }
 
-@media (max-width: 980px) {
-  .addBookPage {
-    display: block;
-  }
-}
-
 .searchForm {
   display: grid;
   grid-template-columns: 1fr;

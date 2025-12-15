@@ -35,6 +35,11 @@ export default function BookList({ books, statusLabels }: BookListProps) {
                   {book.authors.join(", ") || "Unknown author"} •{" "}
                   <strong>{statusLabels[book.status]}</strong>
                 </div>
+                {book.rating && book.rating > 0 && (
+                  <div className="bookRating">
+                    {"★".repeat(book.rating)}{"☆".repeat(5 - book.rating)}
+                  </div>
+                )}
                 <div className="tagList">
                   {book.genres.slice(0, 3).map((genre) => (
                     <span key={genre} className="tag">

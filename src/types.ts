@@ -20,6 +20,7 @@ export type Book = {
 
   tags: string[];
   notes?: string;
+  rating?: number;
 
   createdAt: string;
   updatedAt: string;
