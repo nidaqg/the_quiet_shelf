@@ -8,7 +8,6 @@ import "./styles/footer.css";
 import "./styles/components.css";
 import "./styles/modal.css";
 import "./styles/library.css";
-import "./styles/daily.css";
 import "./styles/monthly.css";
 import "./styles/add-book.css";
 

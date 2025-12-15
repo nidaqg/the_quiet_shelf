@@ -2,14 +2,13 @@ import { useMemo, useState } from "react";
 import type { BookStatus } from "./types";
 import AddBook from "./pages/AddBook.tsx";
 import Library from "./pages/Library.tsx";
-import Daily from "./pages/Daily.tsx";
 import Monthly from "./pages/Monthly.tsx";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import { useBooks } from "./hooks/useBooks";
 import { useTheme } from "./hooks/useTheme";
 
-type Tab = "add" | "library" | "daily" | "monthly";
+type Tab = "add" | "library" | "monthly";
 
 export const DB_CHANGED_EVENT = "quiet-shelf:db-changed";
 
@@ -40,7 +39,6 @@ export default function App() {
       <div className="mainContent">
         {tab === "add" && <AddBook />}
         {tab === "library" && <Library books={books} counts={counts} />}
-        {tab === "daily" && <Daily books={books} logs={logs} />}
         {tab === "monthly" && <Monthly books={books} logs={logs} />}
 
       <Footer 
@@ -49,7 +47,7 @@ export default function App() {
             ? <>built by <a href="https://github.com/nidaqg" target="_blank" rel="noopener noreferrer">@nidaqg</a></> 
             : tab === "library" 
               ? "Tip: use custom tags to organize your reading list!"
-            : "Tip: log a quick session each day to power the daily + monthly views!"
+            : "Tip: log your reading sessions to see them on the calendar!"
         }
       />
       </div>

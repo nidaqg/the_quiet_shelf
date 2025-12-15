@@ -249,3 +249,49 @@
   margin-top: 4px;
   letter-spacing: 1px;
 }
+
+/* Logs */
+.logsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logItem {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-secondary);
+}
+
+.logDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.logTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.logMeta {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.logNote {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}

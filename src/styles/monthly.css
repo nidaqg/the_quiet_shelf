@@ -11,6 +11,18 @@
   }
 }
 
+.monthlyLeftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.monthlyRightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .monthlyHeader {
   display: flex;
   justify-content: space-between;

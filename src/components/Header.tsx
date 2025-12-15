@@ -2,7 +2,7 @@ import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import type { Theme } from "../hooks/useTheme";
 
-type Tab = "add" | "library" | "daily" | "monthly";
+type Tab = "add" | "library" | "monthly";
 
 type HeaderProps = {
   currentTab: Tab;
@@ -23,7 +23,6 @@ export default function Header({ currentTab, onTabChange, bookCount, theme, onTh
   const navItems: { tab: Tab; label: string }[] = [
     { tab: "add", label: "Add" },
     { tab: "library", label: `Library (${bookCount})` },
-    { tab: "daily", label: "Daily" },
     { tab: "monthly", label: "Monthly" },
   ];
 

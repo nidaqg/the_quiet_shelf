@@ -10,7 +10,7 @@ type LogFormProps = {
 };
 
 export default function LogForm({ books, selectedDate, formattedDate }: LogFormProps) {
-  const [bookId, setBookId] = useState<string>(books[0]?.id || "");
+  const [bookId, setBookId] = useState<string>("");
   const [pages, setPages] = useState<number>(10);
   const [minutes, setMinutes] = useState<number>(0);
   const [note, setNote] = useState("");
