@@ -22,7 +22,7 @@ export default function Header({ currentTab, onTabChange, bookCount, theme, onTh
 
   const navItems: { tab: Tab; label: string }[] = [
     { tab: "add", label: "Add" },
-    { tab: "library", label: `Library (${bookCount})` },
+    { tab: "library", label: "Library" },
     { tab: "monthly", label: "Monthly" },
   ];
 

@@ -2,7 +2,6 @@ import BookList from "./BookList";
 import type { Book, BookStatus } from "../types";
 
 type Props = {
-  title: string;
   books: Book[];
   onCycleStatus: (book: Book) => void;
   onRemove: (id: string) => void;
@@ -10,7 +9,6 @@ type Props = {
 };
 
 export default function BookSection({
-  title,
   books,
   onCycleStatus,
   onRemove,
@@ -19,16 +17,11 @@ export default function BookSection({
   if (books.length === 0) return null;
 
   return (
-    <>
-      <h3 className="sectionTitle" style={{ marginBottom: 12 }}>
-        {title}
-      </h3>
-      <BookList
-        books={books}
-        onCycleStatus={onCycleStatus}
-        onRemove={onRemove}
-        statusLabels={statusLabels}
-      />
-    </>
+    <BookList
+      books={books}
+      onCycleStatus={onCycleStatus}
+      onRemove={onRemove}
+      statusLabels={statusLabels}
+    />
   );
 }

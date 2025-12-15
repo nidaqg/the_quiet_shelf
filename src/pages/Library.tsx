@@ -75,45 +75,61 @@ export default function Library({ books }: Props) {
         </div>
       </div>
 
-      <div className="card libraryCards">
-        <BookSection
-          title="Currently Reading"
-          books={booksByStatus.reading}
-          onCycleStatus={cycleStatus}
-          onRemove={removeBook}
-          statusLabels={STATUS_LABELS}
-        />
-      </div>
+      {booksByStatus.reading.length > 0 && (
+        <>
+          <h1 className="sectionTitle">{`Currently Reading (${booksByStatus.reading.length})`}</h1>
+          <div className="card libraryCards">
+            <BookSection
+              books={booksByStatus.reading}
+              onCycleStatus={cycleStatus}
+              onRemove={removeBook}
+              statusLabels={STATUS_LABELS}
+            />
+          </div>
+        </>
+      )}
 
-      <div className="card libraryCards">
-        <BookSection
-          title="To Be Read"
-          books={booksByStatus.tbr}
-          onCycleStatus={cycleStatus}
-          onRemove={removeBook}
-          statusLabels={STATUS_LABELS}
-        />
-      </div>
+      {booksByStatus.tbr.length > 0 && (
+        <>
+          <h1 className="sectionTitle">{`To Be Read (${booksByStatus.tbr.length})`}</h1>
+          <div className="card libraryCards">
+            <BookSection
+              books={booksByStatus.tbr}
+              onCycleStatus={cycleStatus}
+              onRemove={removeBook}
+              statusLabels={STATUS_LABELS}
+            />
+          </div>
+        </>
+      )}
 
-      <div className="card libraryCards">
-        <BookSection
-          title="Finished"
-          books={booksByStatus.finished}
-          onCycleStatus={cycleStatus}
-          onRemove={removeBook}
-          statusLabels={STATUS_LABELS}
-        />
-      </div>
+      {booksByStatus.finished.length > 0 && (
+        <>
+          <h1 className="sectionTitle">{`Finished Reading (${booksByStatus.finished.length})`}</h1>
+          <div className="card libraryCards">
+            <BookSection
+              books={booksByStatus.finished}
+              onCycleStatus={cycleStatus}
+              onRemove={removeBook}
+              statusLabels={STATUS_LABELS}
+            />
+          </div>
+        </>
+      )}
 
-      <div className="card">
-        <BookSection
-          title="Did Not Finish"
-          books={booksByStatus.dnf}
-          onCycleStatus={cycleStatus}
-          onRemove={removeBook}
-          statusLabels={STATUS_LABELS}
-        />
-      </div>
+      {booksByStatus.dnf.length > 0 && (
+        <>
+          <h1 className="sectionTitle">{`Did Not Finish (${booksByStatus.dnf.length})`}</h1>
+          <div className="card libraryCards">
+            <BookSection
+              books={booksByStatus.dnf}
+              onCycleStatus={cycleStatus}
+              onRemove={removeBook}
+              statusLabels={STATUS_LABELS}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
