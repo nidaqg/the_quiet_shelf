@@ -39,7 +39,7 @@
 .hamburger span {
   width: 24px;
   height: 2px;
-  background: var(--text-secondary);
+  background: var(--text-on-header);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -59,30 +59,30 @@
 @media (max-width: 768px) {
   .nav {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 90%;
+    right: 24px;
     flex-direction: column;
     gap: 0;
     background: var(--bg-secondary);
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    width: 250px;
+    width: 180px;
   }
 
   .nav.open {
     max-height: 400px;
     border: 1px solid var(--border-primary);
-    width: 250px;
+    width: 180px;
   }
 }
 
 .navLink {
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-on-header);
   cursor: pointer;
   font-size: 14px;
   padding: 8px 0;
@@ -92,12 +92,13 @@
 }
 
 .navLink:hover {
-  color: var(--text-primary);
+  color: var(--text-on-header);
+  opacity: 0.8;
   border-bottom-color: var(--border-focus);
 }
 
 .navLink[aria-pressed="true"] {
-  color: var(--text-primary);
+  color: var(--text-on-header);
   border-bottom-color: var(--border-focus);
   font-weight: 500;
 }
@@ -110,17 +111,26 @@
     width: 100%;
     text-align: left;
     font-size: 13px;
+    color: var(--text-primary);
+  }
+
+  .navLink:hover {
+    color: var(--text-primary);
+    opacity: 0.8;
   }
 
   .navLink[aria-pressed="true"] {
     background: var(--bg-hover);
     border-bottom: 1px solid var(--border-secondary);
+    color: var(--text-primary);
   }
 }
 
 .themeToggleWrapper {
   padding: 12px 16px;
-  border-top: 1px solid var(--border-primary);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .themeToggle {

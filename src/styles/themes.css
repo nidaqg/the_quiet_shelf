@@ -41,7 +41,7 @@ body[data-theme="light"] {
   --text-primary: #000000;
   --text-secondary: #3d5954;
   --text-tertiary: #5f7973;
-  --text-on-header: white;
+  --text-on-header: #ffffff;
   
   --border-primary: #d0d9d5;
   --border-secondary: #b8c5c0;
