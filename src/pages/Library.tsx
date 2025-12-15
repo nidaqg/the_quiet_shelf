@@ -20,13 +20,15 @@ const STATUS_LABELS: Record<BookStatus, string> = {
 
 export default function Library({ books }: Props) {
   const [tagFilter, setTagFilter] = useState<string>("all");
+  const [ratingFilter, setRatingFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const { tags, filteredBooks } = useLibraryFilters(
     books,
     "all",
     tagFilter,
-    searchQuery
+    searchQuery,
+    ratingFilter
   );
 
   const { cycleStatus, removeBook } = useBookActions();
@@ -51,6 +53,19 @@ export default function Library({ books }: Props) {
     [tags]
   );
 
+  const ratingOptions = useMemo(
+    () => [
+      { value: "all", label: "All" },
+      { value: "5", label: "★★★★★" },
+      { value: "4", label: "★★★★☆" },
+      { value: "3", label: "★★★☆☆" },
+      { value: "2", label: "★★☆☆☆" },
+      { value: "1", label: "★☆☆☆☆" },
+      { value: "unrated", label: "Unrated" },
+    ],
+    []
+  );
+
   return (
     <div className="libraryPage">
       <div className="card libraryHeaderCard">
@@ -63,9 +78,17 @@ export default function Library({ books }: Props) {
             onChange={setTagFilter}
             options={tagOptions}
           />
+          <div style={{ marginTop: 15 }}>
+            <FilterSelect
+              label="Rating"
+              value={ratingFilter}
+              onChange={setRatingFilter}
+              options={ratingOptions}
+            />
+          </div>
         </div>
 
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginTop: 15 }}>
           <SearchInput
             label="Search"
             value={searchQuery}

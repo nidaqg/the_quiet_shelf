@@ -32,8 +32,7 @@ export default function BookList({ books, statusLabels }: BookListProps) {
               <div className="bookDetails">
                 <div className="bookTitle">{book.title}</div>
                 <div className="bookMeta">
-                  {book.authors.join(", ") || "Unknown author"} •{" "}
-                  <strong>{statusLabels[book.status]}</strong>
+                  {book.authors.join(", ") || "Unknown author"}
                 </div>
                 {book.rating && book.rating > 0 && (
                   <div className="bookRating">

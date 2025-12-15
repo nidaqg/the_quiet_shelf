@@ -5,7 +5,8 @@ export function useLibraryFilters(
   books: Book[],
   statusFilter: BookStatus | "all",
   tagFilter: string,
-  searchQuery: string
+  searchQuery: string,
+  ratingFilter: string
 ) {
   const tags = useMemo(() => {
     const tagSet = new Set<string>();
@@ -24,11 +25,16 @@ export function useLibraryFilters(
       .filter((book) => (statusFilter === "all" ? true : book.status === statusFilter))
       .filter((book) => (tagFilter === "all" ? true : book.tags.includes(tagFilter)))
       .filter((book) => {
+        if (ratingFilter === "all") return true;
+        if (ratingFilter === "unrated") return !book.rating || book.rating === 0;
+        return book.rating === Number(ratingFilter);
+      })
+      .filter((book) => {
         if (!query) return true;
         const searchText = `${book.title} ${book.authors.join(" ")} ${book.tags.join(" ")}`.toLowerCase();
         return searchText.includes(query);
       });
-  }, [books, statusFilter, tagFilter, searchQuery]);
+  }, [books, statusFilter, tagFilter, ratingFilter, searchQuery]);
 
   return { tags, filteredBooks };
 }
