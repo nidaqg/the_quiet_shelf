@@ -56,11 +56,11 @@ export default function Library({ books }: Props) {
   const ratingOptions = useMemo(
     () => [
       { value: "all", label: "All" },
-      { value: "5", label: "★★★★★" },
-      { value: "4", label: "★★★★☆" },
-      { value: "3", label: "★★★☆☆" },
-      { value: "2", label: "★★☆☆☆" },
-      { value: "1", label: "★☆☆☆☆" },
+      { value: "5", label: "5 Stars" },
+      { value: "4", label: "4 Stars" },
+      { value: "3", label: "3 Stars" },
+      { value: "2", label: "2 Stars" },
+      { value: "1", label: "1 Star" },
       { value: "unrated", label: "Unrated" },
     ],
     []
