@@ -27,8 +27,22 @@ function normalizeGenres(categories: string[]): string[] {
   return Array.from(out);
 }
 
-export async function searchGoogleBooksByTitle(title: string): Promise<GoogleBookResult[]> {
-  const q = `intitle:${title}`;
+export async function searchGoogleBooksByTitle(title: string, author?: string): Promise<GoogleBookResult[]> {
+  const queryParts: string[] = [];
+  
+  if (title.trim()) {
+    queryParts.push(`intitle:${title}`);
+  }
+  
+  if (author?.trim()) {
+    queryParts.push(`inauthor:${author}`);
+  }
+  
+  if (queryParts.length === 0) {
+    return [];
+  }
+  
+  const q = queryParts.join('+');
   const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20`;
 
   const res = await fetch(url);

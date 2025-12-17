@@ -7,25 +7,28 @@ type BookSearchProps = {
 };
 
 export default function BookSearch({ onSelectBook }: BookSearchProps) {
-  const [query, setQuery] = useState("");
+  const [titleQuery, setTitleQuery] = useState("");
+  const [authorQuery, setAuthorQuery] = useState("");
   const [results, setResults] = useState<GoogleBookResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    const searchQuery = query.trim();
-    if (!searchQuery) return;
+    const title = titleQuery.trim();
+    const author = authorQuery.trim();
+    
+    if (!title && !author) return;
 
     setLoading(true);
     setError(null);
     setResults([]);
 
     try {
-      const searchResults = await searchGoogleBooksByTitle(searchQuery);
+      const searchResults = await searchGoogleBooksByTitle(title, author);
       setResults(searchResults);
       if (searchResults.length === 0) {
-        setError("No results found. Try adding author keywords.");
+        setError("No results found. Try different keywords.");
       }
     } catch (err: any) {
       setError(err?.message || "Search failed.");
@@ -38,18 +41,32 @@ export default function BookSearch({ onSelectBook }: BookSearchProps) {
     <>
       <form className="searchForm" onSubmit={handleSearch}>
         <div className="field">
-          <label className="label" htmlFor="bookSearchQuery">
+          <label className="label" htmlFor="bookSearchTitle">
             Title
           </label>
           <input
-            id="bookSearchQuery"
+            id="bookSearchTitle"
             className="input"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={titleQuery}
+            onChange={(e) => setTitleQuery(e.target.value)}
             placeholder="e.g. The Hobbit"
           />
-          <div className="hint">Search by title, then click the correct result.</div>
         </div>
+
+        <div className="field">
+          <label className="label" htmlFor="bookSearchAuthor">
+            Author
+          </label>
+          <input
+            id="bookSearchAuthor"
+            className="input"
+            value={authorQuery}
+            onChange={(e) => setAuthorQuery(e.target.value)}
+            placeholder="e.g. J.R.R. Tolkien"
+          />
+        </div>
+        
+        <div className="hint">Search by title, author, or both.</div>
 
         <div className="actions">
           <button className="button" type="submit" disabled={loading}>
