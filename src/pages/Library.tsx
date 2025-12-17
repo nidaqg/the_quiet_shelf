@@ -18,6 +18,16 @@ const STATUS_LABELS: Record<BookStatus, string> = {
   dnf: "DNF",
 };
 
+const STATUS_SECTIONS: Array<{
+  status: BookStatus;
+  title: string;
+}> = [
+  { status: "reading", title: "Currently Reading" },
+  { status: "tbr", title: "To Be Read" },
+  { status: "finished", title: "Finished Reading" },
+  { status: "dnf", title: "Did Not Finish" },
+];
+
 export default function Library({ books }: Props) {
   const [tagFilter, setTagFilter] = useState<string>("all");
   const [ratingFilter, setRatingFilter] = useState<string>("all");
@@ -98,61 +108,24 @@ export default function Library({ books }: Props) {
         </div>
       </div>
 
-      {booksByStatus.reading.length > 0 && (
-        <>
-          <h1 className="sectionTitle">{`Currently Reading (${booksByStatus.reading.length})`}</h1>
-          <div className="card libraryCards">
-            <BookSection
-              books={booksByStatus.reading}
-              onCycleStatus={cycleStatus}
-              onRemove={removeBook}
-              statusLabels={STATUS_LABELS}
-            />
-          </div>
-        </>
-      )}
+      {STATUS_SECTIONS.map(({ status, title }) => {
+        const sectionBooks = booksByStatus[status];
+        if (sectionBooks.length === 0) return null;
 
-      {booksByStatus.tbr.length > 0 && (
-        <>
-          <h1 className="sectionTitle">{`To Be Read (${booksByStatus.tbr.length})`}</h1>
-          <div className="card libraryCards">
-            <BookSection
-              books={booksByStatus.tbr}
-              onCycleStatus={cycleStatus}
-              onRemove={removeBook}
-              statusLabels={STATUS_LABELS}
-            />
+        return (
+          <div key={status}>
+            <h1 className="sectionTitle">{`${title} (${sectionBooks.length})`}</h1>
+            <div className="card libraryCards">
+              <BookSection
+                books={sectionBooks}
+                onCycleStatus={cycleStatus}
+                onRemove={removeBook}
+                statusLabels={STATUS_LABELS}
+              />
+            </div>
           </div>
-        </>
-      )}
-
-      {booksByStatus.finished.length > 0 && (
-        <>
-          <h1 className="sectionTitle">{`Finished Reading (${booksByStatus.finished.length})`}</h1>
-          <div className="card libraryCards">
-            <BookSection
-              books={booksByStatus.finished}
-              onCycleStatus={cycleStatus}
-              onRemove={removeBook}
-              statusLabels={STATUS_LABELS}
-            />
-          </div>
-        </>
-      )}
-
-      {booksByStatus.dnf.length > 0 && (
-        <>
-          <h1 className="sectionTitle">{`Did Not Finish (${booksByStatus.dnf.length})`}</h1>
-          <div className="card libraryCards">
-            <BookSection
-              books={booksByStatus.dnf}
-              onCycleStatus={cycleStatus}
-              onRemove={removeBook}
-              statusLabels={STATUS_LABELS}
-            />
-          </div>
-        </>
-      )}
+        );
+      })}
     </div>
   );
 }
