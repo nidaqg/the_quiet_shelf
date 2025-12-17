@@ -113,7 +113,7 @@ export default function Library({ books }: Props) {
         if (sectionBooks.length === 0) return null;
 
         return (
-          <div key={status}>
+          <div className="librarySection" key={status}>
             <h1 className="sectionTitle">{`${title} (${sectionBooks.length})`}</h1>
             <div className="card libraryCards">
               <BookSection

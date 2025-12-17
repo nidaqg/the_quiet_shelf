@@ -1,10 +1,17 @@
 .libraryPage {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  .card {
+    max-width: 800px;
+    width: 100%;
+  }
 }
 
 .libraryCards {
   margin-bottom: 24px;
+  width: 100%;
   gap: 10px;
 }
 
@@ -12,4 +19,7 @@
   margin-bottom: 24px;
 }
 
-
+.librarySection {
+  width: 100%;
+  max-width: 800px;
+}
